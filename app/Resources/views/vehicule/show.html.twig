@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehicule</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vehicule.id }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ vehicule.marque }}</td>
+            </tr>
+            <tr>
+                <th>Modele</th>
+                <td>{{ vehicule.modele }}</td>
+            </tr>
+            <tr>
+                <th>Serie</th>
+                <td>{{ vehicule.serie }}</td>
+            </tr>
+            <tr>
+                <th>Annee</th>
+                <td>{{ vehicule.annee }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ vehicule.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Kilometrage</th>
+                <td>{{ vehicule.kilometrage }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ vehicule.etat }}</td>
+            </tr>
+            <tr>
+                <th>Dateenregistrement</th>
+                <td>{% if vehicule.dateEnregistrement %}{{ vehicule.dateEnregistrement|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Immatriculation</th>
+                <td>{{ vehicule.immatriculation }}</td>
+            </tr>
+            <tr>
+                <th>Nbredeplace</th>
+                <td>{{ vehicule.nbreDePlace }}</td>
+            </tr>
+            <tr>
+                <th>Transmission</th>
+                <td>{{ vehicule.transmission }}</td>
+            </tr>
+            <tr>
+                <th>Moteur</th>
+                <td>{{ vehicule.moteur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehicule_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('vehicule_edit', { 'id': vehicule.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

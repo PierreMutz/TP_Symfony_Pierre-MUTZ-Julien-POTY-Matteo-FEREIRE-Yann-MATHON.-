@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Locations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Dateenregistrement</th>
+                <th>Tarif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td><a href="{{ path('location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
+                <td>{% if location.dateDebut %}{{ location.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if location.dateFin %}{{ location.dateFin|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if location.dateEnregistrement %}{{ location.dateEnregistrement|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ location.tarif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('location_show', { 'id': location.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('location_edit', { 'id': location.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('location_new') }}">Create a new location</a>
+        </li>
+    </ul>
+{% endblock %}
